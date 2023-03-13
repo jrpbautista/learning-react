@@ -1,10 +1,14 @@
-import "./App.css";
-import Input from "./components/Input";
+import TodoItem from "./components/TodoItem.js";
 
 function App() {
     return (
         <div className="App">
-            <Input />
+            <ul>
+                <TodoItem text="todo 1" />
+                <TodoItem text="todo 2" />
+                <TodoItem text="todo 3" />
+                <TodoItem text="todo 4" />
+            </ul>
         </div>
     );
 }
