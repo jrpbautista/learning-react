@@ -1,5 +1,9 @@
 const TodoItem = (props) => {
-    return <li>{props.text}</li>;
+    const onClickHandler = () => {
+        props.onItemClick(props.text);
+    };
+
+    return <li onClick={onClickHandler}>{props.text}</li>;
 };
 
 export default TodoItem;
