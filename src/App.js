@@ -1,19 +1,15 @@
 import "./App.css";
+import Input from "./components/Input";
 
 function App() {
   return (
     <div className="App">
-      <label htmlFor="name">Name: </label>
-      <input type="text" id="name" name="name"></input>
+      <Input />
     </div>
-
-    /* 
-      why htmlFor? 
-      In JSX, htmlFor reflects the 'for' content property.
-      
-      Source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor
-    */
   );
+
+  // here, we created a new component: Input in components folder
+  // which contains the input we created last branch
 }
 
 export default App;
