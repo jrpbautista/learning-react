@@ -1,35 +1,37 @@
-import TodoItem from "./components/TodoItem.js";
+import { useState } from "react";
+import Form from "./components/todo/form/Form";
+import TodoItem from "./components/todo/item/Item";
 
 function App() {
-    const DUMMY_TODO = [
-        {
-            text: "todo 1",
-        },
-        {
-            text: "todo 2",
-        },
-        {
-            text: "todo 3",
-        },
-        {
-            text: "todo 4",
-        },
-        {
-            text: "todo 5",
-        },
-    ];
+    const [todoList, setTodoList] = useState([]);
 
-    const clickItemHandler = (text) => {
-        alert(text + " is clicked");
+    const deleteItemHandler = (id) => {
+        setTodoList((prevState) => prevState.filter((todo) => todo.id !== id));
+    };
+
+    const addItemHandler = (text) => {
+        setTodoList((prevState) => [
+            ...prevState,
+            { text, id: `${Math.random()}` },
+        ]);
     };
 
     return (
         <div className="App">
-            <ul>
-                {DUMMY_TODO.map((todo) => (
-                    <TodoItem text={todo.text} onItemClick={clickItemHandler} />
-                ))}
-            </ul>
+            <Form onAddItem={addItemHandler} />
+            {todoList.length !== 0 && (
+                <ul>
+                    {todoList.map((todo) => (
+                        <TodoItem
+                            key={todo.id}
+                            id={todo.id}
+                            text={todo.text}
+                            onDeleteClick={deleteItemHandler}
+                        />
+                    ))}
+                </ul>
+            )}
+            {todoList.length === 0 && <p>Nothing to do today!</p>}
         </div>
     );
 }
