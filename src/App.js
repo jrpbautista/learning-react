@@ -1,6 +1,24 @@
 import TodoItem from "./components/TodoItem.js";
 
 function App() {
+    const DUMMY_TODO = [
+        {
+            text: "todo 1",
+        },
+        {
+            text: "todo 2",
+        },
+        {
+            text: "todo 3",
+        },
+        {
+            text: "todo 4",
+        },
+        {
+            text: "todo 5",
+        },
+    ];
+
     const clickItemHandler = (text) => {
         alert(text + " is clicked");
     };
@@ -8,10 +26,9 @@ function App() {
     return (
         <div className="App">
             <ul>
-                <TodoItem text="todo 1" onItemClick={clickItemHandler} />
-                <TodoItem text="todo 2" onItemClick={clickItemHandler} />
-                <TodoItem text="todo 3" onItemClick={clickItemHandler} />
-                <TodoItem text="todo 4" onItemClick={clickItemHandler} />
+                {DUMMY_TODO.map((todo) => (
+                    <TodoItem text={todo.text} onItemClick={clickItemHandler} />
+                ))}
             </ul>
         </div>
     );
